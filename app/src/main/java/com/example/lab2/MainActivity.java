@@ -22,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnPhoneCLick {
 
     private static final String TAG = "ERROR";
     public static final int EDIT_CODE = 99;
@@ -124,6 +124,18 @@ public class MainActivity extends AppCompatActivity {
             Bundle bundle = data.getExtras();
             Phone phone = new Phone(bundle.getString("manufacturer"), bundle.getString("model"), bundle.getString("version"), bundle.getString("website"));
             mPhoneViewModel.insert(phone);
+
+        }
+
+        else if (resultCode == EDIT_CODE)
+        {
+            Toast.makeText(MainActivity.this, "Działa", Toast.LENGTH_LONG).show();
+            Bundle bundle = data.getExtras();
+            Phone phone = new Phone(bundle.getString("manufacturer"), bundle.getString("model"), bundle.getString("version"), bundle.getString("website"), bundle.getLong("id"));
+            mPhoneViewModel.updatePhone(phone);
+
+            // mPhoneViewModel.updatePhone(phone);
+
 
         }
         else {

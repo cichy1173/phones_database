@@ -44,4 +44,11 @@ public class PhoneRepository {
             mElementDao.deletePhone(phone);
         });
     }
+
+    public void updatePhone(Phone phone) {
+        PhoneRoomDatabase.databaseWriteExecutor.execute(()
+        -> {
+            mElementDao.updatePhone(phone);
+        });
+    }
 }

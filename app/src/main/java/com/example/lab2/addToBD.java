@@ -24,6 +24,8 @@ public class addToBD extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_bd2);
 
+        Bundle bundle = getIntent().getExtras();
+
         cancelButton = findViewById(R.id.cancelButton);
         mWebsiteButton = findViewById(R.id.websiteButton);
         saveButton = findViewById(R.id.saveButton);
@@ -52,16 +54,33 @@ public class addToBD extends AppCompatActivity {
        if (!(mManufacturer.isEmpty() && mModel.isEmpty() &&
                mAndroidVersion.isEmpty() && mWebsite.isEmpty()))
        {
-           Bundle bundle = new Bundle();
-           bundle.putString("manufacturer", mManufacturer);
-           bundle.putString("model", mModel);
-           bundle.putString("version", mAndroidVersion);
-           bundle.putString("website", mWebsite);
 
-           Intent replyIntent = new Intent();
-           replyIntent.putExtras(bundle);
-           setResult(RESULT_OK, replyIntent);
-           finish();
+           if (bundle == null) {
+               Bundle bundle2 = new Bundle();
+               bundle2.putString("manufacturer", mManufacturer);
+               bundle2.putString("model", mModel);
+               bundle2.putString("version", mAndroidVersion);
+               bundle2.putString("website", mWebsite);
+
+               Intent replyIntent = new Intent();
+               replyIntent.putExtras(bundle2);
+               setResult(RESULT_OK, replyIntent);
+               finish();
+           }
+
+           else {
+               Bundle bundle2 = new Bundle();
+               bundle2.putLong("id", bundle.getLong("id"));
+               bundle2.putString("manufacturer", mManufacturer);
+               bundle2.putString("model", mModel);
+               bundle2.putString("version", mAndroidVersion);
+               bundle2.putString("website", mWebsite);
+
+               Intent replyIntent = new Intent();
+               replyIntent.putExtras(bundle2);
+               setResult(99, replyIntent);
+               finish();
+           }
        }
 
        else {
@@ -85,6 +104,12 @@ public class addToBD extends AppCompatActivity {
                website.setError(getString(R.string.error));
            }
        }
+
+
+//       if (saveButton.getText().toString().matches("SAVE"))
+//       {
+//
+//       }
    });
 
 
@@ -113,22 +138,22 @@ public class addToBD extends AppCompatActivity {
        }
    });
 
-   Bundle bundle = getIntent().getExtras();
-   if (bundle != null) {
-       int bId = bundle.getInt("id");
-       String bOem = bundle.getString("manufacturer");
-       String bModel = bundle.getString("model");
-       String bVersion = bundle.getString("version");
-       String bWebsite = bundle.getString("web");
 
-       manufacturer.setText(bOem);
-       model.setText(bModel);
-       androidVersion.setText(bVersion);
-       website.setText(bWebsite);
+       if (bundle != null) {
+           long bId = bundle.getLong("id");
+           String bOem = bundle.getString("manufacturer");
+           String bModel = bundle.getString("model");
+           String bVersion = bundle.getString("version");
+           String bWebsite = bundle.getString("web");
 
-       saveButton.setText("EDIT");
+           manufacturer.setText(bOem);
+           model.setText(bModel);
+           androidVersion.setText(bVersion);
+           website.setText(bWebsite);
 
-   }
+           saveButton.setText("EDIT");
+
+       }
     }
 
     @Override

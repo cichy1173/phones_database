@@ -3,6 +3,8 @@ package com.example.lab2;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.OnConflictStrategy;
 import androidx.room.PrimaryKey;
 
 @Entity (tableName = "smartphone")
@@ -34,6 +36,16 @@ public class Phone {
         this.mVersion = mVersion;
         this.mWebsite = mWebsite;
     }
+
+    @Ignore
+    public Phone(@NonNull String mOEM, @NonNull String mModel, @NonNull String mVersion, @NonNull String mWebsite, @NonNull long id) {
+        this.mOEM = mOEM;
+        this.mModel = mModel;
+        this.mVersion = mVersion;
+        this.mWebsite = mWebsite;
+        this.mId = id;
+    }
+
 
 
     public long getFie_mId() {
@@ -79,4 +91,6 @@ public class Phone {
     public void setFie_mWebsite(@NonNull String mWebsite) {
         this.mWebsite = mWebsite;
     }
+
+
 }
