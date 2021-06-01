@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">LAB2</string>
+    <string name="title_activity_recycler_view_item">recycler_view_item</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="clear_all_data">Clear All Data</string>
+    <string name="webiste">Webiste</string>
+    <string name="android_version">Android version</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="model">Model</string>
+    <string name="website">Website</string>
+    <string name="save">save</string>
+    <string name="empty">Empty!</string>
+    <string name="error">Error</string>
+    <item name="ClearAllData" type="id" />
+</resources>
