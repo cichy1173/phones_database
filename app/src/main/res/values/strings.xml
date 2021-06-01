@@ -16,5 +16,7 @@
     <string name="empty">Empty!</string>
     <string name="error">Error</string>
     <string name="edit_text">EDIT</string>
+    <string name="cleared">Cleared</string>
+    <string name="unkown_result">Unknown result</string>
     <item name="ClearAllData" type="id" />
 </resources>

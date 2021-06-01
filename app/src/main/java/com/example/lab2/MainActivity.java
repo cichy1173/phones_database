@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements OnPhoneCLick {
 
         if (id == R.id.ClearAllData)
         {
-            Toast.makeText(MainActivity.this, "Cleared", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, R.string.cleared, Toast.LENGTH_LONG).show();
             mPhoneViewModel.deleteAll();
             return true;
         }
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements OnPhoneCLick {
         }
 
         else {
-            Log.e(TAG, "Unknown result");
+            Log.e(TAG, getString(R.string.unkown_result));
         }
     }
 
