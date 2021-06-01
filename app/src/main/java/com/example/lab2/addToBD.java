@@ -52,11 +52,10 @@ public class addToBD extends AppCompatActivity {
        String mWebsite = website.getText().toString();
 
        if (!(mManufacturer.isEmpty() && mModel.isEmpty() &&
-               mAndroidVersion.isEmpty() && mWebsite.isEmpty()))
-       {
+               mAndroidVersion.isEmpty() && mWebsite.isEmpty())) {
 
+           Bundle bundle2 = new Bundle();
            if (bundle == null) {
-               Bundle bundle2 = new Bundle();
                bundle2.putString("manufacturer", mManufacturer);
                bundle2.putString("model", mModel);
                bundle2.putString("version", mAndroidVersion);
@@ -65,11 +64,9 @@ public class addToBD extends AppCompatActivity {
                Intent replyIntent = new Intent();
                replyIntent.putExtras(bundle2);
                setResult(RESULT_OK, replyIntent);
-               finish();
            }
 
            else {
-               Bundle bundle2 = new Bundle();
                bundle2.putLong("id", bundle.getLong("id"));
                bundle2.putString("manufacturer", mManufacturer);
                bundle2.putString("model", mModel);
@@ -79,13 +76,12 @@ public class addToBD extends AppCompatActivity {
                Intent replyIntent = new Intent();
                replyIntent.putExtras(bundle2);
                setResult(99, replyIntent);
-               finish();
            }
+           finish();
        }
 
        else {
            Toast.makeText(addToBD.this, "Write text", Toast.LENGTH_LONG).show();
-            //dodać errory z oznaczeniem które puste
 
            if (mManufacturer.matches(""))
            {
@@ -105,11 +101,6 @@ public class addToBD extends AppCompatActivity {
            }
        }
 
-
-//       if (saveButton.getText().toString().matches("SAVE"))
-//       {
-//
-//       }
    });
 
 
@@ -124,15 +115,13 @@ public class addToBD extends AppCompatActivity {
                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                    startActivity(browserIntent);
                }
-               else
-               {
+               else {
                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                    startActivity(browserIntent);
                }
            }
 
-           else
-           {
+           else {
                website.setError(getString(R.string.empty));
            }
        }
@@ -151,14 +140,13 @@ public class addToBD extends AppCompatActivity {
            androidVersion.setText(bVersion);
            website.setText(bWebsite);
 
-           saveButton.setText("EDIT");
+           saveButton.setText(R.string.edit_text);
 
        }
     }
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState)
-    {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString("manu_save", manufacturer.getText().toString());
         outState.putString("model_save", model.getText().toString());
         outState.putString("version_save", androidVersion.getText().toString());
@@ -167,8 +155,7 @@ public class addToBD extends AppCompatActivity {
 
     }
     @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState)
-    {
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
         manufacturer.setText(savedInstanceState.getString("manu_save"));

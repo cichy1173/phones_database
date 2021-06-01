@@ -127,21 +127,15 @@ public class MainActivity extends AppCompatActivity implements OnPhoneCLick {
 
         }
 
-        else if (resultCode == EDIT_CODE)
-        {
-            Toast.makeText(MainActivity.this, "Działa", Toast.LENGTH_LONG).show();
+        else if (resultCode == EDIT_CODE) {
             Bundle bundle = data.getExtras();
             Phone phone = new Phone(bundle.getString("manufacturer"), bundle.getString("model"), bundle.getString("version"), bundle.getString("website"), bundle.getLong("id"));
             mPhoneViewModel.updatePhone(phone);
-
-            // mPhoneViewModel.updatePhone(phone);
-
-
         }
+
         else {
             Log.e(TAG, "Unknown result");
         }
-
     }
 
 

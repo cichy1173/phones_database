@@ -15,5 +15,6 @@
     <string name="save">save</string>
     <string name="empty">Empty!</string>
     <string name="error">Error</string>
+    <string name="edit_text">EDIT</string>
     <item name="ClearAllData" type="id" />
 </resources>
